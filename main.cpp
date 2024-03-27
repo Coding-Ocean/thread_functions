@@ -3,9 +3,10 @@
 using namespace std;
 
 int main() {
-	thread t([](int n) {
+	auto func = [](int n) {
 		while (n-- > 0)
 			cout << n << endl;
-		}, 10);
+	};
+	thread t(func, 10);
 	t.join();
 }
