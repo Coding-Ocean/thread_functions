@@ -4,17 +4,19 @@ using namespace std;
 
 class functor {
 public:
-	void operator()(int n) {
+	void operator()() {
+		int n = 10;
 		while (n-- > 0)cout << n << endl;
 	}
 };
 
 int main() {
-	//thread t( (functor()) );
+	//インスタンスを用意しない場合
+	thread t( (functor()) );
 	
-	functor f;
-	thread t2(f,10);
+	//インスタンスを用意する場合
+	//functor f;
+	//thread t(f);
 
-	//t.join();
-	t2.join();
+	t.join();
 }
